@@ -358,9 +358,9 @@ function run () {
     toolTip('You are using an `https` connection. Please switch to `http` if you are using Remix against an `http Web3 provider` or allow Mixed Content in your browser.')
   }
   // Oops! Accidentally trigger refresh or bookmark.
-  window.onbeforeunload = function () {
-    return 'Are you sure you want to leave?'
-  }
+  // window.onbeforeunload = function () {
+  //   return 'Are you sure you want to leave?'
+  // }
 
   // Run the compiler instead of trying to save the website
   $(window).keydown(function (e) {
