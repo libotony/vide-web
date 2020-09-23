@@ -195,11 +195,12 @@ function ExecutionContext () {
   this.setProviderFromEndpoint = setProviderFromEndpoint;
 
   this.txDetailsLink = function (network, hash) {
-	  	var explore = 'insight';
-		var isSync = navigator.userAgent.indexOf(' Sync/')!==-1;
-		if(!isSync && network !== 'Mainnet')explore = 'veforge';
-		if(transactionDetailsLinks[explore][network]) {//vide
-			return transactionDetailsLinks[explore][network] + hash;
+	  	var explorer = 'insight';
+	 	if(!connex && network !== 'Unknown'){
+			explorer = 'official' 
+		}
+		if(transactionDetailsLinks[explorer][network]) {//vide
+			return transactionDetailsLinks[explorer][network] + hash;
 		}
   }
 }
@@ -207,12 +208,10 @@ var transactionDetailsLinks = {
 	'insight':{
 		'Mainnet': 'https://insight.vecha.in/#/txs/',
 		'Testnet': 'https://insight.vecha.in/#/txs/',
-		'Unknown': 'https://insight.vecha.in/#/txs/'
 	},
-	'veforge':{
-		'Mainnet': 'https://explore.veforge.com/transactions/',
-		'Testnet': 'https://testnet.veforge.com/transactions/',
-		'Unknown': 'https://testnet.veforge.com/transactions/'
+	'official':{
+		'Mainnet': 'https://explore.vechain.org/transactions/',
+		'Testnet': 'https://explore-testnet.vechain.org/transactions/',
 	}
 }
 
